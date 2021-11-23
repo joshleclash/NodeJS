@@ -1,10 +1,9 @@
 import {getConnection} from '../connection/getConnection';
 
 
-export  const  getUsers = async (req,res)=>
+export  const  getProductos = async (req,res)=>
 {
     try{
-        
         const pool = await getConnection();
         const rs = pool.request().query("select * from users")
         res.send({"server status":'Ready',"rs":(await rs).recordset})
@@ -17,7 +16,7 @@ export  const  getUsers = async (req,res)=>
     
         
 } 
-export  const  createNewUser = async (req,res)=>
+export  const  createProductos = async (req,res)=>
 {
     try{
         const pool = await getConnection();
@@ -27,12 +26,12 @@ export  const  createNewUser = async (req,res)=>
 
     }catch(err){
             res.status(500);
-            res.send({"err":err});
+            res.send(err);
     }
     
         
 } 
-export  const loginUser = async (req,res)=>
+export  const deleteProductos = async (req,res)=>
 {
     try{
         const pool = await getConnection();
@@ -42,12 +41,12 @@ export  const loginUser = async (req,res)=>
 
     }catch(err){
             res.status(500);
-            res.send({"err":err});
+            res.send(err);
     }
     
         
 }
-export  const  deleteUser = async (req,res)=>
+export  const  modificarProductos = async (req,res)=>
 {
     try{
         const pool = await getConnection();
@@ -56,9 +55,8 @@ export  const  deleteUser = async (req,res)=>
         res.end();
 
     }catch(err){
-
             res.status(500);
-            res.send({"err":err});
+            res.send(err);
     }
     
         

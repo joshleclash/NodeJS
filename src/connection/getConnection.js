@@ -1,8 +1,9 @@
+import {configCredentials} from  '../../src/configCredentials';
 import sql from 'mssql';
 
 const dbSettings = {
-    user:     "saTp",
-    password: "1019002704",
+    user:     configCredentials.db.username,
+    password: configCredentials.db.password,
     server:   "srvdesarrollo",
     database: "tp",
     port:1433,
@@ -17,7 +18,6 @@ const dbSettings = {
         trustServerCertificate: false // change to true for local dev / self-signed certs
       }
   }
-
   export async function getConnection()
   {
     try{
